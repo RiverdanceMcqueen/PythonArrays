@@ -1,0 +1,165 @@
+Git & Github
+
+Git commands:
+
+Clone - Bring a remotely hosted repository into a folder on your local machine
+
+Add - track your files and changes in git 
+
+Commit - save your files in git 
+
+Push - upload got commits to a remote repo like GitHub
+
+Pull - download changes from remote repo to your local machine, the opposite of push 
+
+
+In markdown editor 
+
+# creates a header font size
+
+## creates a subheading
+
+Git status shows changes that have not been changed in a commit yet
+
+Git add . (Period) Will add any untracked files along with modified files
+
+Alternatively you can just add individual files
+
+Eg git add index.html 
+
+To commit:
+
+Git. Commit -m “a message titling changes”
+
+*you need a message in order to commit
+
+You Can add a second message for the description box
+
+Git commit -m “a message titling changes -m “added a html page”
+
+Pushing to a live repo where my project is hosted:
+
+To create SSH Keys
+
+Ssh-keygen -t rsa -b 4096 -C “djlivett@icloud.com”
+
+Key will need to be added to ssh agent - follow GitHub guide for this
+
+PUSHING TO GIT
+
+Git push origin main
+
+Origin is a word that is set for us. Main is the branch that we want to push to
+
+
+
+To initialise a local repository
+
+Type “git commit”
+
+To push that local non-cloned repo to GitHub 
+
+1. Create an empty repo in GitHub
+2. Copy ssh address of repo
+3. Add the remote repo as a destination on local machine:
+		“git remote add origin {ssh address}
+4. To check remote repositories:
+		“git remote -v”
+
+To create a shortcut in order to avoid always typing git push origin master
+		“git push -u origin master”
+
+After this you can just type 
+		“git push”
+
+BRANCHING
+
+Typing “git branch” shows all current branches, a “*” denotes the branch that you are on
+
+To create a new branch
+		“git checkout -b {name I.e feature-description / ticket number etc”
+
+To move between branches
+		“git checkout {branch name}”
+
+
+Git Diff Command
+
+Shows the differences between branches. Use
+		“git diff {branch to check against current branch you’re in}
+
+You can then merge using
+		“git merge {branch to merge onto your current branch}”
+
+HOWEVER: A better practice is to push to GitHub and create a pull request
+
+		“git push -u origin {branch name}
+
+Making Pull Requests & Merging
+
+A pull request is a request to have your code pulled into another branch. If people comment and ask for changes, you can make them as long as you push to the same branch that you made the pull request with
+
+You can either click on the link presented in the terminal after pushing or go to your GitHub and find the notification to create a pull request in your repo.
+
+Update the notes with the changes you made then create pull request.
+
+In pull request interface, under files changed tab you can make comments on individual lines of code - this helps changes stand out and can be used by others for suggestions
+
+Click MERGE Pull Requests
+
+
+To then get the changes on your local master branch:
+		switch to master branch
+		“git checkout main”
+
+		Then pull
+
+		“git pull” or “git pull origin master” if the upstream has not been set
+
+Delete the separate branch
+		“git branch -d {name of branch}
+
+
+
+Shortcut to add and commit modified files in 1 step instead of adding and committing
+		“git commit -am “[some comment]”
+
+
+MERGE CLASHES
+
+If changes exist in the same lines of a file, you will not be able to change branch until you commit or stash your changes.
+
+When merging with main using “git merge main” git will give a warning of a clash. In VS Code you can change the code or accept incoming changes. 
+
+Once done you will need to commit again before merging with main.
+
+Undoing in GIT
+
+To undo a stage: “git rest” or “git rest filename”
+To undo a commit: “git reset HEAD” will uncommitted the last commit. HEAD~1 will go back to the commit before, HEAD~2 two before etc
+
+Commit history
+		“Can be found by typing “git log” which displays in reverse chronological order
+
+You can use the commit hash code too by typing
+		“git reset {hashcode}
+
+Keeps local files same allowing for recommit. It just upstages them from git.
+
+To get rid of all changes since a certain point
+		“git reset —hard {Hashcode} 
+
+Changes all local files
+
+FORKING:
+
+Forking is the process of copying the entire repository.
+
+Hit fork button and fork to user account. This creates the repo in your personal GitHub. 
+
+To get changes back into the main repo your forked from.
+
+- New pull request
+- Set base as the repo you pulled from
+- Set the branch that you’re forking from in your local github
+
